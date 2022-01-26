@@ -1,0 +1,244 @@
+# region  Encabezado de comentarios
+// Adaptación de: http://cupi2.uniandes.edu.co/sitio/index.php/cursos/apo1/nivel-1/el-empleado/visualizacion-codigo/empleado
+// ===++===
+//
+// 	OrtizOL
+//
+// ===--===
+/* ================================================ ============
+//
+// Clase: Empleado.cs
+//
+// Propósito: Representar a la clase de `Empleado` del
+// modelo del mundo del problema.
+//
+================================================== ========== */
+# endregion
+
+utilizando  el sistema ;
+utilizando  el sistema . Colecciones . genérico ;
+utilizando  el sistema . Linq ;
+utilizando  el sistema . texto ;
+utilizando  el sistema . Enhebrar _ tareas ;
+utilizando  el sistema . ventanas _ formularios ;
+
+espacio de nombres  N1_Empleado . modelos
+{
+    /// < resumen >
+    /// Representa a la clase Empleado del modelo del mundo del problema.
+    /// </ resumen >
+     Empleado de clase  pública
+    {
+        # región  Campos
+        /// < resumen >
+        /// Nombre del empleado.
+        /// </ resumen >
+         cadena  privada nombre ;
+
+        /// < resumen >
+        /// Apellido del empleado.
+        /// </ resumen >
+         cadena  privada apellido ;
+
+        /// < resumen >
+        /// Género (sexo) del empleado.
+        /// </ resumen >
+         char  genero privado ;
+
+        /// < resumen >
+        /// Fotografía del empleado.
+        /// </ resumen >
+         PictureBox  privado foto ;
+
+        /// < resumen >
+        /// Salario del empleado.
+        /// </ resumen >
+         salario decimal  privado ;
+
+        /// < resumen >
+        /// Fecha de nacimiento del empleado.
+        /// </ resumen >
+        privado  Fecha  fecha Nacimiento ;
+
+        /// < resumen >
+        /// Fecha de ingreso del empleado a la organizaicón.
+        /// </ resumen >
+        privado  Fecha  fechaIngreso ;
+        # endregion
+
+        # región  Propiedades
+         cadena  pública Nombre 
+        {
+            obtener
+            {
+                volver  nombre ;
+            }
+            colocar
+            {
+                nombre  =  valor ;
+            }
+        }
+
+         cadena  pública Apellido 
+        {
+            obtener
+            {
+                return  apellido ;
+            }
+            colocar
+            {
+                apellido  =  valor ;
+            }
+        }
+
+         char  publico genero
+        {
+            obtener
+            {
+                volver  genero ;
+            }
+            colocar
+            {
+                género  =  valor ;
+            }
+        }
+
+        Public  PictureBox  Foto
+        {
+            obtener
+            {
+                volver  foto ;
+            }
+            colocar
+            {
+                foto  =  valor ;
+            }
+        }
+
+         salario publico decimal 
+        {
+            obtener
+            {
+                volver  salario ;
+            }
+            colocar
+            {
+                salario  =  valor ;
+            }
+        }
+
+        público  Fecha Fecha  Nacimiento
+        {
+            obtener
+            {
+                volver  fecha Nacimiento ;
+            }
+            colocar
+            {
+                fechaNacimiento  =  valor ;
+            }
+        }
+
+        public  Fecha  FechaIngreso
+        {
+            obtener
+            {
+                volver  fechaIngreso ;
+            }
+            colocar
+            {
+                fechaIngreso  =  valor ;
+            }
+        }
+        # endregion
+
+        # región  Constructores
+        /// < resumen >
+        /// Crea un empleado con los datos básicos.
+        /// </ resumen >
+        /// < param  name = " nombre " >Nombre del empleado.</ param >
+        /// < param  name = " apellido " >Primer apellido dempleado.</ param >
+        /// < param  name = " genero " >Género (sexo) del empleado.</ param >
+         Empleado publico ( string  nombre , string  apellido , char  genero )
+        {
+            esto _ nombre  =  nombre ;
+            esto _ apellido  =  apellido ;
+            esto _ genero  =  genero ;
+        }
+        /// < resumen >
+        /// Crea un empleado con todos los datos inicializados.
+        /// </ resumen >
+        /// < param  name = " nombre " >Nombre del empleado.</ param >
+        /// < param  name = " apellido " >Primer apellido dempleado.</ param >
+        /// < param  name = " genero " >Género (sexo) del empleado.</ param >
+        /// < param  name = " salario " >Salario del empleado.</ param >
+        /// < param  name = " fechaNacimiento " >Fecha de nacimiento del empleado.</ param >
+        /// < param  name = " fechaIngreso " >Fecha de ingreso del empleado a la compañía.</ param >
+        /// < param  name = " imagen " >Fotografía del empleado.</ param >
+        public  Empleado ( string  nombre , string  apellido , char  genero , decimal  salario , Fecha  fechaNacimiento , Fecha  fechaIngreso , PictureBox  imagen )
+        {
+            esto _ nombre  =  nombre ;
+            esto _ apellido  =  apellido ;
+            esto _ genero  =  genero ;
+            esto _ salario  =  salario ;
+            esto _ fechaNacimiento  =  fechaNacimiento ;
+            esto _ fechaIngreso  =  fechaIngreso ;
+            foto  =  imagen ;
+        }
+        # endregion
+
+        # región  Métodos Auxiliares
+        /// < resumen >
+        /// Calcula la edad del empleado con base en la fecha de nacimiento.
+        /// </ resumen >
+        /// < vuelve >Edad del empleado.</ vuelve >
+        public  int  CalcularEdad ()
+        {
+            Fecha  fechaActual  =  nueva  Fecha ();
+
+            volver  fecha Nacimiento . CalcularDiferenciaMeses ( fechaActual ) /  12 ;
+        }
+
+        /// < resumen >
+        /// Calcular la antigüedad del mpleado.
+        /// </ resumen >
+        /// < Returns > Devuelve la antigüedad del empleado hasta la fecha actual.</ Returns >
+        public  int  CalcularAntigüedad ()
+        {
+            Fecha  fechaActual  =  nueva  Fecha ();
+
+            volver  fechaIngreso . CalcularDiferenciaMeses ( fechaActual ) /  12 ;
+        }
+
+        /// < resumen >
+        /// Calcular las prestaciones del empleado.
+        /// </ resumen >
+        /// < regresa >Prestaciones del empleado.</ regresa >
+        public  decimal  CalcularPrestaciones ()
+        {
+            retorno ( CalcularAntigüedad ( ) *  salario ) /  12 ;
+        }
+        # endregion
+
+        /// < resumen >
+        /// Punto de extensión (1) del empleado.
+        /// (Podría tratarse de un método adicional.)
+        /// </ resumen >
+        /// < regresa >Cadena de texto con mensaje de prueba.</ regresa >
+        # región  Puntos de extensión
+         cadena  pública Método1 ()
+        {
+            return  " Mensaje de respuesta 1 " ;
+        }
+
+        /// Punto de extensión (2) del empleado.
+        /// (Podría tratarse de un método adicional.)
+        /// </ resumen >
+        /// < regresa >Cadena de texto con mensaje de prueba.</ regresa >
+         cadena  pública Método2 ()
+        {
+            return  " Mensaje de respuesta 2 " ;
+        }
+        # endregion
+    }
+}
